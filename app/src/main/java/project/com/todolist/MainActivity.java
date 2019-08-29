@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
     private Button addBtn;
     private ListView todoList;
     private SQLiteDatabase dB;
-    private String dBName = "appDB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +32,10 @@ public class MainActivity extends Activity {
             addBtn = findViewById(R.id.addBtn);
             todoList = findViewById(R.id.todoList);
 
-            //Create DataBase if not exists
-            dB = openOrCreateDatabase(dBName, MODE_PRIVATE, null);
+            createDB("appDb");
 
             //Create Table if not exists
-            dB.execSQL("CREATE TABLE IF NOT EXISTS todolist(id INTEGER PRIMARY KEY AUTOINCREMENT, todo VARCHAR)");
+            sql("CREATE TABLE IF NOT EXISTS todolist(id INTEGER PRIMARY KEY AUTOINCREMENT, todo VARCHAR)");
 
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,12 +50,23 @@ public class MainActivity extends Activity {
 
     }
 
-    //Save
+    //Create db function
+    private void createDB(String dBName) {
+        //Create DataBase if not exists
+        dB = openOrCreateDatabase(dBName, MODE_PRIVATE, null);
+    }
+
+    //Query function
+    private void sql(String sql) {
+        dB.execSQL(sql);
+    }
+
+    //SaveTodo
     private void saveTodo(String todo) {
 
         if(!todo.equals("")) {
             try {
-                dB.execSQL("INSERT INTO todolist (todo) values ('" + todo + "')");
+                sql("INSERT INTO todolist (todo) values ('" + todo + "')");
                 Toast toast = Toast.makeText(this, "Tarefa Salva", Toast.LENGTH_LONG);
             }catch(Exception e) {
                 e.printStackTrace();
@@ -67,4 +76,5 @@ public class MainActivity extends Activity {
         }
 
     }
+    
 }
