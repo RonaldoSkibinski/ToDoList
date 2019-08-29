@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,6 +34,14 @@ public class MainActivity extends Activity {
 
         //Create Table if not exists
         dB.execSQL("CREATE TABLE IF NOT EXISTS todolist(id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR)");
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = todoText.getText().toString();
+                dB.execSQL("INSERT INTO todolist (tarefa) values ('" + text + "')");
+            }
+        });
 
     }
 }
