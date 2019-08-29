@@ -64,17 +64,19 @@ public class MainActivity extends Activity {
     //SaveTodo
     private void saveTodo(String todo) {
 
+        Toast toast = null;
         if(!todo.equals("")) {
             try {
                 sql("INSERT INTO todolist (todo) values ('" + todo + "')");
-                Toast toast = Toast.makeText(this, "Tarefa Salva", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "Tarefa Salva", Toast.LENGTH_LONG);
             }catch(Exception e) {
                 e.printStackTrace();
             }
         }else {
-            Toast toast = Toast.makeText(this, "Digite Uma Tarefa", Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "Digite Uma Tarefa", Toast.LENGTH_LONG);
         }
+        toast.show();
 
     }
-    
+
 }
