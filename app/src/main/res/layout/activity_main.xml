@@ -19,6 +19,7 @@
         android:ems="10"
         android:hint="@string/txt_tarefas"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/colorPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
