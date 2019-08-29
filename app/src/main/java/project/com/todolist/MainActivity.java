@@ -24,24 +24,30 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Set layout components
-        todoText = findViewById(R.id.todoText);
-        addBtn = findViewById(R.id.addBtn);
-        todoList = findViewById(R.id.todoList);
+        try {
 
-        //Create DataBase if not exists
-        dB = openOrCreateDatabase(dBName, MODE_PRIVATE, null);
+            //Set layout components
+            todoText = findViewById(R.id.todoText);
+            addBtn = findViewById(R.id.addBtn);
+            todoList = findViewById(R.id.todoList);
 
-        //Create Table if not exists
-        dB.execSQL("CREATE TABLE IF NOT EXISTS todolist(id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR)");
+            //Create DataBase if not exists
+            dB = openOrCreateDatabase(dBName, MODE_PRIVATE, null);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String text = todoText.getText().toString();
-                dB.execSQL("INSERT INTO todolist (tarefa) values ('" + text + "')");
-            }
-        });
+            //Create Table if not exists
+            dB.execSQL("CREATE TABLE IF NOT EXISTS todolist(id INTEGER PRIMARY KEY AUTOINCREMENT, todo VARCHAR)");
+
+            addBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String text = todoText.getText().toString();
+                    dB.execSQL("INSERT INTO todolist (todo) values ('" + text + "')");
+                }
+            });
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
