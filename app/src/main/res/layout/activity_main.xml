@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/todoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -24,13 +24,14 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_add"
             android:textSize="24sp" />
 
         <ListView
+            android:id="@+id/todoList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark" />
