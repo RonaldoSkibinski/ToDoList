@@ -20,6 +20,8 @@
         android:hint="@string/txt_tarefas"
         android:inputType="textPersonName"
         android:textColorHighlight="@color/colorPrimary"
+        android:textColorLink="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +29,7 @@
 
     <Button
         android:id="@+id/addBtn"
+        style="@android:style/Widget.Holo.Button"
         android:layout_width="328dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
